@@ -145,28 +145,25 @@ public class transaksi extends koneksi {
             pstm.execute();
             return true;*/
             
-    public boolean Updatedatatransaksi(transaksi datatr) throws SQLException{
+   public boolean Updatedatatransaksi(transaksi datatr) throws SQLException{
         PreparedStatement pstm = null;
         Connection conn = (Connection)koneksi.configDB();
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
         
-        String sql = "UPDATE datatransaksi SET idt=?, idc=?, namak=?, kodek=?, jenis=?, ukuran=?, tanggal=?, harga=? WHERE idt=?";
+        String sql = "UPDATE datatransaksi SET idc=?, namak=?, kodek=?, jenis=?, ukuran=?, tanggal=?, harga=? WHERE idt=?";
     
         try{
             pstm = conn.prepareStatement(sql);
-            pstm = conn.prepareStatement(sql);
-            pstm.setString(1, datatr.getIdt());
-            pstm.setString(2, datatr.getIdc());
-            pstm.setString(3, datatr.getNamak());
-            pstm.setString(4, datatr.getKodek());
-            pstm.setString(5, datatr.getJenis());
-            pstm.setString(6, datatr.getUkuran());
-            pstm.setString(7, df.format(getTanggal()));
-            pstm.setString(8, datatr.getHarga());
-            pstm.setString(9, datatr.getIdt());
+            pstm.setString(8, datatr.getIdt());
+            pstm.setString(1, datatr.getIdc());
+            pstm.setString(2, datatr.getNamak());
+            pstm.setString(3, datatr.getKodek());
+            pstm.setString(4, datatr.getJenis());
+            pstm.setString(5, datatr.getUkuran());
+            pstm.setString(6, df.format(getTanggal()));
+            pstm.setString(7, datatr.getHarga());
             pstm.execute();
             return true;
-            
 
         }catch(HeadlessException | SQLException e){
             System.err.println(e);
